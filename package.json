@@ -2,9 +2,14 @@
   "name": "krishisetu-nexus",
   "version": "1.0.0",
   "description": "KrishiSetu Nexus - Agricultural AI Platform (Supabase PostgreSQL, Express Backend & React Vite Frontend)",
-  "main": "scripts/migrate.js",
+  "main": "backend/src/index.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
-    "start": "npm --prefix backend start",
+    "start": "node backend/src/index.js",
+    "build": "npm install --prefix backend && npm install --prefix krishisetu-frontend && npm run build --prefix krishisetu-frontend",
+    "install:all": "npm install --prefix backend && npm install --prefix krishisetu-frontend",
     "start:backend": "npm --prefix backend start",
     "dev:backend": "npm --prefix backend run dev",
     "start:frontend": "npm --prefix krishisetu-frontend run dev",
