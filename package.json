@@ -1,0 +1,18 @@
+{
+  "name": "krishisetu-nexus-db",
+  "version": "1.0.0",
+  "description": "Supabase PostgreSQL Database Schema, RLS Policies, Seed Data, and Migration Runner for KrishiSetu Nexus",
+  "main": "scripts/migrate.js",
+  "scripts": {
+    "migrate": "node scripts/migrate.js",
+    "migrate:status": "node scripts/migrate.js --status",
+    "migrate:dry-run": "node scripts/migrate.js --dry-run",
+    "migrate:force": "node scripts/migrate.js --force",
+    "test:schema": "node scripts/validate_schema.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.109.0",
+    "dotenv": "^18.0.6",
+    "pg": "^8.23.1"
+  }
+}
