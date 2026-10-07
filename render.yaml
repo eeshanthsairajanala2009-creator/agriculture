@@ -1,8 +1,9 @@
 # render.yaml — KrishiSetu Nexus Deployment Configuration
-# Deploy both Backend API (Web Service) and Frontend (Static Site) on Render
+# HOW TO USE: In Render Dashboard → New → Blueprint Instance → connect this repo
+# Render will automatically create both services below from this file.
 
 services:
-  # ─── 1. Backend Express API ──────────────────────────────────────────────────
+  # ─── 1. Backend Express API (Node.js Web Service) ────────────────────────────
   - type: web
     name: krishisetu-api
     runtime: node
@@ -14,11 +15,10 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
-      - key: PORT
-        value: 5000
+      # Render assigns PORT automatically — do NOT hardcode it
       - key: HOST
         value: 0.0.0.0
-      # Set these in Render Dashboard → Environment → krishisetu-api:
+      # ── Set these manually in Render → Environment → krishisetu-api ──────────
       - key: SUPABASE_URL
         sync: false
       - key: SUPABASE_ANON_KEY
@@ -31,19 +31,15 @@ services:
         sync: false
       - key: SESSION_SECRET
         sync: false
-      # CORS: Set to your Render static site URL once deployed
-      # e.g., https://krishisetu-app.onrender.com
+      # Set CORS_ORIGIN to your static site URL once deployed
       - key: CORS_ORIGIN
-        sync: false
-      - key: PUBLIC_URL
         sync: false
       - key: FRONTEND_URL
         sync: false
 
-  # ─── 2. Frontend React PWA (Static Site) ────────────────────────────────────
-  - type: web
+  # ─── 2. Frontend React PWA (Static Site) ─────────────────────────────────────
+  - type: static
     name: krishisetu-app
-    runtime: static
     plan: free
     rootDir: krishisetu-frontend
     buildCommand: npm install && npm run build
@@ -57,8 +53,8 @@ services:
         source: /*
         destination: /index.html
     envVars:
-      # Set these in Render Dashboard → Environment → krishisetu-app:
-      # Your krishisetu-api service URL from Render
+      # ── Set these manually in Render → Environment → krishisetu-app ──────────
+      # VITE_API_BASE_URL = https://krishisetu-api.onrender.com/api
       - key: VITE_API_BASE_URL
         sync: false
       - key: VITE_SUPABASE_URL
@@ -70,4 +66,4 @@ services:
       - key: VITE_DEFAULT_LANGUAGE
         value: kn
       - key: VITE_ENABLE_MOCK_FALLBACK
-        value: true
+        value: "true"
