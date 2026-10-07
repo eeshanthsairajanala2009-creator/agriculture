@@ -1,0 +1,13 @@
+{
+  "name": "KrishiSetu Nexus",
+  "short_name": "KrishiSetu",
+  "description": "AI Farming Assistant — From farmer question to verified farm action",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a1628",
+  "theme_color": "#16a34a",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

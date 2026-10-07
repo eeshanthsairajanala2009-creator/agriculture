@@ -1,9 +1,14 @@
 {
-  "name": "krishisetu-nexus-db",
+  "name": "krishisetu-nexus",
   "version": "1.0.0",
-  "description": "Supabase PostgreSQL Database Schema, RLS Policies, Seed Data, and Migration Runner for KrishiSetu Nexus",
+  "description": "KrishiSetu Nexus - Agricultural AI Platform (Supabase PostgreSQL, Express Backend & React Vite Frontend)",
   "main": "scripts/migrate.js",
   "scripts": {
+    "start": "npm --prefix backend start",
+    "start:backend": "npm --prefix backend start",
+    "dev:backend": "npm --prefix backend run dev",
+    "start:frontend": "npm --prefix krishisetu-frontend run dev",
+    "build:frontend": "npm --prefix krishisetu-frontend run build",
     "migrate": "node scripts/migrate.js",
     "migrate:status": "node scripts/migrate.js --status",
     "migrate:dry-run": "node scripts/migrate.js --dry-run",
